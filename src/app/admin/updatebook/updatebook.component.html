@@ -1,0 +1,72 @@
+<div *ngIf = "book" class="row" style="margin-top: 5%">
+  <div class="col-md-5 mx-auto my-5">
+    <section class="form-elegant">
+      <mdb-card>
+        <mdb-card-body class="mx-3">
+          <!--Header-->
+          <div class="text-center">
+            <h3 class="dark-grey-text mb-4">
+              <strong>Update Book Details</strong>
+            </h3>
+          </div>
+          <form [formGroup]="updateBookForm" (ngSubmit)="onSubmit()">
+            <div class="md-form">
+              <input type="text" id="isbn" value={{this.book.ISBN}}  class="form-control" formControlName="isbn" mdbInput>
+              <label for="isbn">Enter ISBN</label>
+              <mdb-error *ngIf="isbn.invalid  && (isbn.dirty || isbn.touched)">Input invalid</mdb-error> 
+              <mdb-success *ngIf="isbn.valid">Input valid</mdb-success> 
+            </div>
+            
+            
+            <div class="md-form">
+              <input type="text" id="author" value={{this.book.author}} formControlName="author" class="form-control" mdbInput> 
+              <label for="author">Enter Author Name </label>  
+              <mdb-error *ngIf="author.invalid && (author.dirty || author.touched)">Input invalid</mdb-error> 
+              <mdb-success *ngIf="author.valid  && (author.dirty || author.touched)">Input valid</mdb-success>     
+            </div>
+             
+            <div class="md-form">
+                <input type="text" id="title" value={{this.book.title}} formControlName="title" class="form-control" mdbInput>
+                <label for="title">Enter Title Of The Book</label>  
+                <mdb-error *ngIf="title.invalid && (title.dirty || title.touched)">Input invalid</mdb-error> 
+                <mdb-success *ngIf="title.valid  && (author.dirty || author.touched)">Input valid</mdb-success>     
+            </div>
+            <p>Select Category</p>
+            <div class="md-form">
+                <select type="text" id="category" value = {{this.book.category}} formControlName="category" class="form-control" >
+                    <option >Technology</option>
+                    <option >Business</option>
+                    <option >Fiction</option>
+                    <option >Management</option>
+                    <option >Non Fiction</option>
+                </select>
+                <mdb-error *ngIf="categor.invalid && (categor.dirty || categor.touched)">Input invalid</mdb-error> 
+                <mdb-success *ngIf="categor.valid  && (categor.dirty || categor.touched)">Input valid</mdb-success>    
+            </div>
+            <div class="md-form">
+                <input type="text" id="imageLink" value={{this.book.imageLink}} formControlName="imageLink" class="form-control" mdbInput>
+                <label for="imageLink">Enter imageLink</label>  
+                <mdb-error *ngIf="imageLink.invalid && (imageLink.dirty || imageLink.touched)">Input invalid</mdb-error> 
+                <mdb-success *ngIf="imageLink.valid  && (author.dirty || author.touched)">Input valid</mdb-success>     
+            </div>
+
+            <div class="md-form">
+                <input type="text" id="noofcopies" value={{this.book.noofcopies}} formControlName="noofcopies" class="form-control" mdbInput>
+                <label for="noofcopies">Enter No Of Copies </label>  
+                <mdb-error *ngIf="noofcopies.invalid && (noofcopies.dirty || noofcopies.touched)">Input invalid</mdb-error> 
+                <mdb-success *ngIf="noofcopies.valid  && (author.dirty || author.touched)">Input valid</mdb-success>     
+            </div>
+
+          <div class="text-center mb-3">
+            <button type="submit" mdbBtn gradient="blue" block="true" [disabled] = '!updateBookForm.valid' rounded="true" class="z-depth-1a waves-light" mdbWavesEffect>Update Book</button>
+          </div>
+          </form>
+          <!--Body-->
+
+        </mdb-card-body>
+        <!--Footer-->
+      </mdb-card>
+
+    </section>
+  </div>
+</div>

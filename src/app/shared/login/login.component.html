@@ -1,0 +1,45 @@
+  <div class="row" style="margin-top: 5%">
+    <div class="col-md-5 mx-auto my-5">
+      <section class="form-elegant">
+        <mdb-card>
+          <mdb-card-body class="mx-3">
+            <!--Header-->
+            <div class="text-center">
+              <h3 class="dark-grey-text mb-4">
+                <strong>Sign in</strong>
+              </h3>
+            </div>
+  
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="md-form">
+                <input type="text" id="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" formControlName="email" mdbInput>
+                <label for="email">Your email</label>
+                <mdb-error *ngIf="email.invalid && (email.dirty || email.touched)">Input invalid</mdb-error> 
+                <mdb-success *ngIf="email.valid && (email.dirty || email.touched)">Input valid</mdb-success> 
+              </div>
+  
+              <div class="md-form pb-3">
+                <input type="password" id="password" formControlName="password" class="form-control" mdbInput>
+                <label for="password">Your password</label>  
+                <mdb-error *ngIf="password.invalid && (password.dirty || password.touched)">Input invalid</mdb-error> 
+                <mdb-success *ngIf="password.valid && (password.dirty || password.touched)">Input valid</mdb-success>     
+              </div>
+                
+            <div class="text-center mb-3">
+              <button type="submit" mdbBtn gradient="blue" block="true" [disabled] = '!loginForm.valid' rounded="true" class="z-depth-1a waves-light" mdbWavesEffect>Log in</button>
+            </div>
+            </form>
+            <!--Body-->
+
+          </mdb-card-body>
+          <!--Footer-->
+          <div class="modal-footer mx-5 pt-3 mb-1">
+            <p class="font-small grey-text d-flex justify-content-end">Not a member?
+              <a [routerLink]="['/signup']"   class="blue-text ml-1"> Sign Up</a>
+            </p>
+          </div>
+        </mdb-card>
+  
+      </section>
+    </div>
+  </div>

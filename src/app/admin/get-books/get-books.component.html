@@ -1,0 +1,60 @@
+<br/>
+<span class="container">
+        <span class="row">
+          <span class="col-3">
+           <!-- Sidebar -->
+    <span class="sidebar-fixed position-fixed">
+        <form>
+        <a class="logo-wrapper wav../es-effect">
+            <img src="assets/narutoo.jpg" class="img-fluid" alt="">
+        </a>
+
+        <span class="list-group list-group-flush">
+          
+<mdb-checkbox value="Business" (change)="filterdata($event)" class="list-group-item list-group-item-action waves-effect">Business</mdb-checkbox>
+<mdb-checkbox value="Non Fiction" (change)="filterdata($event)" class="list-group-item list-group-item-action waves-effect">Non Fiction</mdb-checkbox>
+<mdb-checkbox value="Management" (change)="filterdata($event)" class="list-group-item list-group-item-action waves-effect">Management</mdb-checkbox>
+<mdb-checkbox value="Technology" (change)="filterdata($event)" class="list-group-item list-group-item-action waves-effect">Technology</mdb-checkbox>
+<mdb-checkbox value="Fiction" (change)="filterdata($event)" class="list-group-item list-group-item-action waves-effect">Fiction</mdb-checkbox>
+
+            </span>
+</form>
+    </span >
+    <!-- Sidebar -->
+          </span>
+          <span class="col-7" style="margin-top: 2.5%">
+              <input class="form-control mr-sm-2" [(ngModel)]="inputdata" (input) = "search()" placeholder="Search">
+              <br/>
+        <span class="row" >
+            <span class="col-4" *ngFor="let book of testarray">      
+     <mdb-card > 
+        <mdb-card-img src={{book.imageLink}} alt="Card image cap"></mdb-card-img>
+        <mdb-card-body>
+      
+
+          <mdb-card-title>
+            <h4>Card Title</h4>
+          </mdb-card-title>
+      
+
+          <mdb-card-text> Some quick example text to build on the card title and make up the bulk of the card's
+            content.
+          </mdb-card-text>
+      
+<p>
+  {{book.id}}
+</p>
+
+<a [routerLink]="['/admin/updatebook', book.id]" mdbBtn color="primary" mdbWavesEffect>Update</a>
+          <button (click)="deletebook(book.id)">Delete</button>
+        </mdb-card-body>
+      </mdb-card>
+    </span>
+  </span>
+  <div *ngIf ="testarray.length === 0">
+    <h1 style="align-content: center">Sorry No Books Available</h1>
+</div>
+  </span>
+    </span>
+  </span>
+ 

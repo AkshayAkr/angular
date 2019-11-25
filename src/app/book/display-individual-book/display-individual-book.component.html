@@ -1,0 +1,35 @@
+  <div *ngIf = "book">
+  <mdb-card class="col-3" style="margin-top: 5% ; margin-left: 30%"> 
+    <mdb-card-img src={{book.imageLink}} alt="Card image cap"></mdb-card-img>
+    <mdb-card-body>
+      <mdb-card-title><h4>{{book.title}}</h4> </mdb-card-title>
+      <mdb-card-title><h5> Author: {{book.author}}</h5> </mdb-card-title>
+      <mdb-card-title><h5>Category: {{book.category}}</h5> </mdb-card-title>
+      <mdb-card-title><h5>ISBN: {{book.ISBN}}</h5> </mdb-card-title>
+      <mdb-card-title><h5>IsAvailable : {{book.isAvailable}}</h5> </mdb-card-title>
+<button type="button" *ngIf = "book.isAvailable === 'Yes'" (click) = "submit()" mdbBtn color="primary" mdbWavesEffect>Add To Cart</button>
+<h4  *ngIf = "book.isAvailable === 'No'" ><p>Book is not available right now . Please check any other book.</p></h4>
+    </mdb-card-body>
+  </mdb-card>
+</div>
+<br/>
+<div *ngIf = "userComments" style="margin-left: 25%">
+  <h1> User Comments And Ratings</h1>
+  <div *ngFor = "let user of userComments">
+    <div *ngFor = "let comments of user.comments">
+      <div *ngIf = "comments.bookid == id">
+          <mdb-card class="col-8"> 
+       <h3>User Name: {{user.name}}</h3>
+       <br/>
+       <br/>
+       <h3>Comments: {{comments.comments}}</h3>
+       <br/>
+      <br/>
+      <h3> Rating: {{comments.rating}}</h3>
+      <br/>
+        </mdb-card>
+        <br/>
+      </div>
+    </div>
+  </div>
+</div>

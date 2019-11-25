@@ -1,0 +1,43 @@
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="col-9" style="margin-left: 10%" *ngIf = "commonarray">
+<input class="form-control mr-sm-2"  [(ngModel)]="inputdata" (input) = "search()" placeholder="Filter Here By UserName , Title , Author or Issued Date">
+</div>
+<br/>
+<br/>
+<div  style="margin-left: 10%">
+<button type="button" (click) = "sortByUserName()" mdbBtn color="primary" mdbWavesEffect>Sort By UserName</button>
+                
+<button type="button" (click) = "sortByTitle()" mdbBtn color="primary" mdbWavesEffect>Sort By title</button>
+
+<button type="button" (click) = "sortByAuthor()" mdbBtn color="primary" mdbWavesEffect>Sort By Author</button>
+
+<button type="button" (click) = "sortByIssuedDate()" mdbBtn color="primary" mdbWavesEffect>Sort By IssuedDate</button>
+</div>
+<div *ngIf = "user" class="row" style="margin-top: 5%">
+    <span *ngFor = "let data of commonarray">
+        <mdb-card class="col-8" style="margin-left: 30%"> 
+            <mdb-card-img src={{data.imageLink}} alt="Card image cap"></mdb-card-img>
+            <mdb-card-body>
+            <mdb-card-text>
+              Title:  {{data.title}}
+            </mdb-card-text>
+            <mdb-card-text>
+              Author Name:  {{data.author}}
+            </mdb-card-text>
+            <mdb-card-text>
+               Book Taken By: {{data.name}}
+            </mdb-card-text>
+             <mdb-card-text>
+              Book Taken On:  {{data.issuedDate}}
+            </mdb-card-text>
+              </mdb-card-body>
+              </mdb-card>
+              <br/>
+    </span>
+<div *ngIf = "commonarray.length === 0" style="margin-left: 10%">
+  <h1>Sorry No Books Available </h1>
+</div>
+  </div>

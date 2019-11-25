@@ -1,0 +1,36 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo fixed-top">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand><a class="navbar-brand">My Library</a></mdb-navbar-brand>
+
+  <!-- Collapsible content -->
+  <links>
+
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item" style="margin-left: 25%">
+              <a [routerLink]="['/disp']" class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only"></span></a>
+          </li>
+      </ul>
+      <!-- Links -->
+      <div *ngIf="((this.auth._isLoggedIn === 'Yes') && this.auth.user)">
+        <a  [routerLink]="['/user/mybooks']" class="dropdown-item waves-light" mdbWavesEffect >Mybooks</a>
+        </div>
+        <div *ngIf="((this.auth._isLoggedIn === 'Yes') && this.auth.user)">
+          <a  [routerLink]="['/user/profile']" class="dropdown-item waves-light" mdbWavesEffect >Profile</a>
+          </div>
+      <div *ngIf="!(this.auth._isLoggedIn === 'Yes')">
+        <a  [routerLink]="['/login']" class="dropdown-item waves-light" mdbWavesEffect >Login</a>
+        </div>
+        <div *ngIf="((this.auth._isLoggedIn === 'Yes') && this.auth.admin)">
+          <a  [routerLink]="['/admin/admin']" class="dropdown-item waves-light" mdbWavesEffect >Admin</a>
+          </div>
+        <div *ngIf = "this.auth._isLoggedIn === 'Yes'">
+        <a  [routerLink]="['/logout']" class="dropdown-item waves-light" mdbWavesEffect>Logout</a>
+    </div>
+  </links>
+  <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->

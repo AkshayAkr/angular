@@ -1,0 +1,47 @@
+<div *ngIf = "user" class="row" style="margin-top: 5%">
+  <span *ngFor = "let book of books">
+<span *ngFor = "let use of user.bookid">
+  <span *ngIf = "book.id == use.bid">
+      <mdb-card class="col-8" style="margin-left: 15%"> 
+          <mdb-card-img src={{book.imageLink}} alt="Card image cap"></mdb-card-img>
+          <mdb-card-body>
+            <mdb-card-text> Author: {{book.author}} </mdb-card-text>
+            <mdb-card-text> Category: {{book.category}} </mdb-card-text>
+            <mdb-card-text>Book Available Till: {{use.enddate | slice:0:10}} </mdb-card-text>
+      <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" (click)="return(book.id)" mdbWavesEffect>Return</button>
+      <button type="button" (click) = "renew(book.id)" mdbBtn color="primary" mdbWavesEffect>Renew</button>
+          </mdb-card-body>
+        </mdb-card>
+  </span>
+</span>
+  </span>
+  <span *ngIf = "user.allBooks.length ===0" style="margin-left: 35%">
+    <h1>No Books Taken Yet</h1>
+  </span>
+  <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100 font-weight-bold" id="myModalLabel">Please Add Review and Ratings</h4>
+        </div>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+            <input type="text" class="form-control" id="Comments" [(ngModel)]="comment" mdbInput >
+            <label for="form3">Any comments</label>
+          </div>
+          <p>Please give ratings</p>
+        <div class="md-form mb-5">
+          <star-rating value="1" checkedcolor="red"  uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
+        </div>
+        <div class="modal-footer">
+          <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+          <button type="button" mdbBtn color="primary" (click)="returnbook()" class="relative waves-light" (click)="basicModal.hide()" mdbWavesEffect>Save changes</button>
+        </div>
+      </div>
+      </div>
+    </div>
+</div>

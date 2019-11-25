@@ -1,0 +1,46 @@
+<div *ngIf = "user">
+    <mdb-card class="col-3" style="margin-top: 5% ;margin-left: 30% ; align-content: center">
+    <mdb-card-img src="assets/naruto.jpg"  alt="Card image cap"></mdb-card-img>
+    <h3 style="margin-left: 32%">Name :{{user.name}}</h3>
+  <h1 style="margin-left: 10%">Favourite Categories</h1>
+      <span *ngFor = "let use of user.categories" style="margin-left: 32%">
+        <h3>{{use}}</h3>
+        </span>
+        </mdb-card>
+</div>
+<br/>
+<h1 style="margin-left: 35%">Books of the liked category</h1>
+<br/>
+<div *ngIf = "user" class="row">
+  <span *ngFor = "let book of books">
+    <span *ngFor = "let use of user.categories" >
+        <span *ngIf = "book.category === use" >
+            <mdb-card class="col-7" style="margin-top: 5% ; margin-left: 10%"> 
+              <a [routerLink]="['/disp', book.id]">
+                <mdb-card-img src={{book.imageLink}} alt="Card image cap"></mdb-card-img>
+                <mdb-card-body>
+              
+            
+                  <mdb-card-title>
+                    <h4>Card Title</h4>
+                  </mdb-card-title>
+              
+            
+                  <mdb-card-text> Some quick example text to build on the card title and make up the bulk of the card's
+                    content.
+                  </mdb-card-text>
+              
+            <p>
+            {{book.id}}
+            </p>
+            
+            <button type="button" (click) = "check()" mdbBtn color="primary" mdbWavesEffect>Primary</button>
+                </mdb-card-body>
+                </a>
+              </mdb-card>
+    </span>
+    </span>
+  
+  </span>
+  </div>
+
